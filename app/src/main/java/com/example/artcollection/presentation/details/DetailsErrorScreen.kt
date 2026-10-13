@@ -1,4 +1,4 @@
-package com.example.artcollection.ui.details
+package com.example.artcollection.presentation.details
 
 import android.telecom.Call
 import androidx.compose.material3.Text

@@ -4,10 +4,10 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.artcollection.ui.collection.CollectionScreen
-import com.example.artcollection.ui.details.DetailsScreen
-import com.example.artcollection.ui.details.DetailsErrorScreen
-import com.example.artcollection.ui.favorites.FavoriteScreen
+import com.example.artcollection.presentation.collection.CollectionScreen
+import com.example.artcollection.presentation.details.DetailsScreen
+import com.example.artcollection.presentation.details.DetailsErrorScreen
+import com.example.artcollection.presentation.favorites.FavoriteScreen
 
 
 @Composable
