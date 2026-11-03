@@ -30,6 +30,10 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil3.compose.AsyncImage
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
+import androidx.compose.material3.Button
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.Icon
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -54,6 +58,8 @@ fun DetailsScreen(
         }
     }
     else {
+
+        val isFavorite by viewModel.isFavorite.collectAsStateWithLifecycle()
         val item = artwork!!
 
         Scaffold(
@@ -94,6 +100,23 @@ fun DetailsScreen(
 
                 item.description?.let { description ->
                     Text(description)
+                }
+
+                Button(
+                    onClick = {
+                        viewModel.toggleFavorite()
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp)
+                ) {
+                    Text(
+                        if (isFavorite) {
+                            "Удалить из избранного"
+                        } else {
+                            "Добавить в избранное"
+                        }
+                    )
                 }
             }
         }

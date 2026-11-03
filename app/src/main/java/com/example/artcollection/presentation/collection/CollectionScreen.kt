@@ -13,8 +13,12 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.List
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FilterChip
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -41,11 +45,16 @@ import androidx.compose.runtime.getValue
 @Composable
 fun CollectionScreen (
     onOpenDetails: (Int) -> Unit,
+    onOpenFilters: () -> Unit,
     viewModel: ArtworksViewModel = hiltViewModel()
 ) {
 
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val listState = rememberLazyListState()
+
+    val activeFilter by viewModel.activeFilter.collectAsStateWithLifecycle()
+    val isFilterActive = activeFilter != null
+    
 
     LaunchedEffect(listState) {
         snapshotFlow {
@@ -69,6 +78,21 @@ fun CollectionScreen (
             TopAppBar(
                 title = {
                     Text("Список")
+                },
+                actions = {
+                    FilterChip(
+                        selected = isFilterActive,
+                        onClick = onOpenFilters,
+                        label = {
+                            Text("Фильтры")
+                        },
+                        leadingIcon = {
+                            Icon(
+                                imageVector = Icons.AutoMirrored.Filled.List,
+                                contentDescription = null
+                            )
+                        }
+                    )
                 }
             )
         }
@@ -188,6 +212,7 @@ fun ArtworkItem(artwork: ArtworkModel, onClick: (Int) -> Unit) {
 @Composable
 fun CollectionScreenPreview() {
     CollectionScreen(
-        onOpenDetails = {}
+        onOpenDetails = {},
+        onOpenFilters = {}
     )
 }

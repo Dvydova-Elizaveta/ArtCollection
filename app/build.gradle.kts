@@ -73,4 +73,8 @@ dependencies {
     implementation(libs.coil.network.ktor3)
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.ktor.client.okhttp)
+
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    ksp(libs.androidx.room.compiler)
 }

@@ -2,6 +2,7 @@ package com.example.artcollection.data.repository
 
 import com.example.artcollection.data.datasources.ArtworkRemoteDateScore
 import com.example.artcollection.data.mapToDomainModel
+import com.example.artcollection.domain.model.ArtworkFilter
 import com.example.artcollection.domain.model.ArtworkModel
 import com.example.artcollection.domain.model.ArtworkPage
 import com.example.artcollection.domain.repository.ArtworkRepository
@@ -34,11 +35,11 @@ class ArtworkRepositoryImpl @Inject constructor(
     }
 
 
-    // заглушка
     override suspend fun searchArtworks(
-        query: String,
+        filter: ArtworkFilter,
         limit: Int
-    ) =  artworkRemoteDateScore.getArtworks(1, limit)
+    ) =  artworkRemoteDateScore.searchArtworks(filter, limit)
         .data
         .map {it.mapToDomainModel()}
+
 }

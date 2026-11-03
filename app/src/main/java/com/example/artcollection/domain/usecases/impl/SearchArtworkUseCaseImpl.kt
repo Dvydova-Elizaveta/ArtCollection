@@ -1,5 +1,6 @@
 package com.example.artcollection.domain.usecases.impl
 
+import com.example.artcollection.domain.model.ArtworkFilter
 import com.example.artcollection.domain.model.ArtworkModel
 import com.example.artcollection.domain.repository.ArtworkRepository
 import com.example.artcollection.domain.usecases.SearchArtworkUseCase
@@ -10,7 +11,7 @@ class SearchArtworkUseCaseImpl @Inject constructor(
 ) : SearchArtworkUseCase {
 
     override suspend fun searchArtworks(
-        query: String,
+        filter: ArtworkFilter,
         limit: Int
-    ) = repository.searchArtworks(query, limit)
+    ) = repository.searchArtworks(filter, limit)
 }

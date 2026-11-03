@@ -1,5 +1,6 @@
 package com.example.artcollection.domain.repository
 
+import com.example.artcollection.domain.model.ArtworkFilter
 import com.example.artcollection.domain.model.ArtworkModel
 import com.example.artcollection.domain.model.ArtworkPage
 
@@ -13,7 +14,7 @@ interface ArtworkRepository {
     suspend fun getArtwork(id: Int): ArtworkModel
 
     suspend fun searchArtworks(
-        query: String,
+        filter: ArtworkFilter,
         limit: Int
     ): List<ArtworkModel>
 }
