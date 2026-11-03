@@ -1,11 +1,11 @@
-package com.example.artcollection.data
+package com.example.artcollection.domain.model
 
-data class Artwork(
+data class ArtworkModel(
     val id: Int,
     val title: String,
-    val artist: String,
+    val artist: String?,
     val date: String,
-    val imageUrl: Int,
+    val imageUrl: String?,
     val type: String,
     val medium: String,
     val placeOfOrigin: String,
